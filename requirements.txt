@@ -1,3 +1,5 @@
 PyMuPDF
 markdown
 markdownify
+langchain-community
+pypdf
