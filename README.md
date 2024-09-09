@@ -33,4 +33,4 @@ with open('markdown_ver.md', 'w', encoding="utf-8") as f:
       f.write(text)
 ```
 ## Output
-Outputs of `PyMiPDF` are in [here](ouput/).
+Outputs of `PyMiPDF` are in [here](./ouput).
