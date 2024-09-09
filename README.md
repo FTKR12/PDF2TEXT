@@ -34,3 +34,4 @@ with open('markdown_ver.md', 'w', encoding="utf-8") as f:
 ```
 ## Output
 Outputs of `PyMiPDF` are in [here](./output/text_ver.txt) for text format and in [here](./output/markdown_ver.md) for markdown format.
+結果、ほぼ差異はない。
