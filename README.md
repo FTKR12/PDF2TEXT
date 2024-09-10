@@ -1,4 +1,6 @@
 
+PDFのテキスト化検証リポジトリ
+[GMPガイドライン](https://www.pmda.go.jp/files/000156438.pdf)および[第十八改正日本薬局方通則](https://www.mhlw.go.jp/content/11120000/000788359.pdf)で検証。
 # MyMuPDF
 GMPガイドラインを用いてテストを実施。
 ## Instal
@@ -25,7 +27,7 @@ for page in doc:
   texts.append(md(page.get_text()))
 ```
 ## Output
-Outputs of `PyMuPDF` are in [here](./output/pymupdf_text.txt) for text format and in [here](./output/pymupf_markdown.md) for markdown format.
+Outputs of `PyMuPDF` are in [here](./output/guideline/pymupdf_text.txt) for text format and in [here](./output/guideline/pymupf_markdown.md) for markdown format.
 
 結果、ほぼ差異はない。mdの方が若干構造化されている？
 
@@ -46,7 +48,7 @@ for doc in docs:
   texts.append(doc.page_content)
 ```
 ## Output
-Outputs of `PDFMinerLoader` are in [here](./output/langchain_loader.txt) for text format.
+Outputs of `PDFMinerLoader` are in [here](./output/guideline/langchain_loader.txt) for text format.
 
 結果、`PyMuPDF`の方が良さそう。
 
@@ -77,7 +79,7 @@ for i in range(pdf.Pages.Count):
 ```
 
 ## Output
-Outputs of `spire.pdf` are in [here](./output/spire_text.txt) for text format.
+Outputs of `spire.pdf` are in [here](./output/guideline/spire_text.txt) for text format.
 
 なぜかページが途中で切れてる。。。変なWarningも入ってる。。。
 結果、不採用。
