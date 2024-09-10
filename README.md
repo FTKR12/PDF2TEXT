@@ -13,10 +13,6 @@ doc = pymupdf.open("guideline.pdf")
 texts = []
 for page in doc:
   texts.append(page.get_text())
-
-with open('text_ver.txt', 'w', encoding="utf-8") as f:
-    for text in texts:
-      f.write(text)
 ```
 ### Usage for coversion pdf into markdown
 ```python
@@ -27,18 +23,29 @@ doc = pymupdf.open("guideline.pdf")
 texts = []
 for page in doc:
   texts.append(md(page.get_text()))
-
-with open('markdown_ver.md', 'w', encoding="utf-8") as f:
-    for text in texts:
-      f.write(text)
 ```
 ## Output
-Outputs of `PyMiPDF` are in [here](./output/text_ver.txt) for text format and in [here](./output/markdown_ver.md) for markdown format.
-結果、ほぼ差異はない。
+Outputs of `PyMuPDF` are in [here](./output/pymupdf_text.txt) for text format and in [here](./output/pymupf_markdown.md) for markdown format.
+
+結果、ほぼ差異はない。mdの方が若干構造化されている？
 
 # LangChain  DirectoryLoader PDF
 ## Install
 ```sh
-pip install typing-inspect==0.8.0 typing_extensions==4.5.0
-
+pip install langchain-community, pdfminer.six
 ```
+## Usage
+`PyPDFDirectoryLoader`では対応してない日本語フォントがあるらしいので`PDFMinerLoader`を使用。
+```python
+from langchain.document_loaders import PDFMinerLoader
+
+loader = PDFMinerLoader(f'{input_pdf_dir}/guideline.pdf')
+docs = loader.load()
+texts = []
+for doc in docs:
+  texts.append(doc.page_content)
+```
+## Output
+Outputs of `PDFMinerLoader` are in [here](./output/langchain_loader.txt) for text format.
+
+結果、`PyMuPDF`の方が良さそう。
