@@ -49,3 +49,45 @@ for doc in docs:
 Outputs of `PDFMinerLoader` are in [here](./output/langchain_loader.txt) for text format.
 
 結果、`PyMuPDF`の方が良さそう。
+
+# Spire.pdf
+## Install
+```sh
+pip install spire.pdf
+```
+
+## Usage
+```python
+from spire.pdf import PdfDocument
+from spire.pdf import PdfTextExtractOptions
+from spire.pdf import PdfTextExtractor
+
+pdf = PdfDocument()
+pdf.LoadFromFile(input_pdf_path)
+
+extract_options = PdfTextExtractOptions()
+extract_options.IsSimpleExtraction = True # if False, keep layout
+
+texts = []
+for i in range(pdf.Pages.Count):
+    page = pdf.Pages.get_Item(i)
+    text_extractor = PdfTextExtractor(page)
+    text = text_extractor.ExtractText(extract_options)
+    texts.append(text)
+```
+
+## Output
+Outputs of `spire.pdf` are in [here](./output/spire_text.txt) for text format.
+
+なぜかページが途中で切れてる。。。
+結果、不採用。
+
+# 検証結果
+|  Method  |  Rank  |
+| ---- | ---- |
+|  PyMuPDF (Markdown)  | 1 |
+|  PyMuPDF (Text)  | 2 |
+|  LangChain DirectoryLoader (Text) | 3 |
+|  spire.pdf  | 4 |
+
+全体を通して、文字は完璧に抽出可能だが、表は微妙。

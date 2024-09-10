@@ -3,3 +3,5 @@ markdown
 markdownify
 langchain-community
 pypdf
+pdfminer.six
+spire.pdf
