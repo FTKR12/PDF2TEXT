@@ -79,7 +79,7 @@ for i in range(pdf.Pages.Count):
 ## Output
 Outputs of `spire.pdf` are in [here](./output/spire_text.txt) for text format.
 
-なぜかページが途中で切れてる。。。
+なぜかページが途中で切れてる。。。変なWarningも入ってる。。。
 結果、不採用。
 
 # 検証結果
